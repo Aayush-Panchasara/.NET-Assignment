@@ -13,4 +13,3 @@ public class Program
         Console.WriteLine($"Device name: {Environment.MachineName}");
 
     }
-}

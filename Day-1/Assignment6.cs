@@ -11,9 +11,9 @@ public class Tax
     public void tryModification()
     {
         System.Console.WriteLine("Try to modify the const and readonly field");
-         //TaxRate = 3;
+         //TaxRate = 3;  //It will throw error
 
-        // OrderId = "AKU124";
+         //OrderId = "AKU124"; //It will also throw error
 
     }
 }
@@ -25,6 +25,6 @@ public class Program
         Tax t1 = new Tax("DBS123");
 
         t1.tryModification();
-        // t1.OrderId = 2;
+        
     }
 }

@@ -1,45 +1,25 @@
-public class RefrenceType
-{
-    public int ID {get; set;}
-    public String Name {get; set;}
-}
-public struct ValueType
-{
-    public int ID {get; set;}
-    public String Name {get; set;}
-}
 
 public class Program
 {
-    public static void modifyValueType(ValueType temp)
+    public static void modifyValueType(int temp)
     {
-        temp.Name= "Piyush";
-        temp.ID = 2;
+        temp = 10;
     }
-    public static void modifyRefrenceType(RefrenceType temp)
+    public static void modifyRefrenceType(ref int temp)
     {
-        temp.ID = 2;
-        temp.Name= "Piyush";
+        temp = 10;
     }
     public static void Main(string[] args)
     {
-        // ValueType Struct --------------------------------------------------
-        // ValueType v1 = new ValueType { ID = 1, Name = "Aayush"};
-
-        // System.Console.WriteLine($"Before method call : ID = {v1.ID}, Name = {v1.Name}");
+        int valueType = 5,refrenceType = 5;
         
-        // modifyValueType(v1);
-        // System.Console.WriteLine($"After method call : ID = {v1.ID}, Name = {v1.Name}");
+        Console.WriteLine($"Before: {valueType}");
+        modifyValueType(valueType);
+        Console.WriteLine($"After: {valueType}");
 
 
-        // RefrenceType Class --------------------------------------------------------
-
-        RefrenceType r1 = new RefrenceType {ID = 1, Name = "Aayush"};
-
-        System.Console.WriteLine($"Before method call : ID = {r1.ID}, Name = {r1.Name}");
-        modifyRefrenceType(r1);
-
-        System.Console.WriteLine($"After method call : ID = {r1.ID}, Name = {r1.Name}");
-
+        Console.WriteLine($"Before: {refrenceType}");
+        modifyRefrenceType(ref refrenceType);
+        Console.WriteLine($"After: {refrenceType}");
     }
 }
