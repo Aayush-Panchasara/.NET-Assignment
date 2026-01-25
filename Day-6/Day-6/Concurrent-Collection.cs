@@ -12,28 +12,32 @@ namespace Day_6
         //static List<int> list = new List<int>();
         static ConcurrentBag<int> conCurrentList = new ConcurrentBag<int>();
 
-        public static void Add50()
+        public static void AddFirstBatch()
         {
-            for (int i = 1; i <= 5; i++)
+            for (int i = 1; i <= 10; i++)
             {
                 Thread.Sleep(100);
                 //list.Add(i);
                 conCurrentList.Add(i);
+
+                Console.WriteLine($"[Thread {Thread.CurrentThread.ManagedThreadId}] Added: {i}");
             }
         }
-        public static void Add100()
+        public static void AddSecondBatch()
         {
-            for (int i = 5; i <= 10; i++)
+            for (int i = 11; i <= 20; i++)
             {
                 Thread.Sleep(100);
                 //list.Add(i);
                 conCurrentList.Add(i);
+
+                Console.WriteLine($"[Thread {Thread.CurrentThread.ManagedThreadId}] Added: {i}");
             }
         }
         public static void Main()
         {
-            Thread t1 = new Thread(Add50);
-            Thread t2 = new Thread(Add100);
+            Thread t1 = new Thread(AddFirstBatch);
+            Thread t2 = new Thread(AddSecondBatch);
 
             t1.Start();
             t2.Start();
