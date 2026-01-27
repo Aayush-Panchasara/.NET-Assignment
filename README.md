@@ -11,3 +11,5 @@ Day 4 : https://docs.google.com/document/d/1qppTfvOqg20NgVUPD2l5h5YohUs4J8dq27xH
 Day 5 : https://docs.google.com/document/d/1yLIcxKsXRFvZbLsQHy1x2W8udxZ6fKEy6c-4FIJSqPo/edit?usp=sharing
 
 Day-6 : https://docs.google.com/document/d/1Ytm9WChfMxK53g9a5v0bjoJIU_9WOnKbKL1A8DGa2Bg/edit?usp=sharing
+
+OOPs-Day1 : https://docs.google.com/document/d/13kn811PSL32CiV1UG92_tQBCxRrztd6XkHk8iiT4yKY/edit?usp=sharing
