@@ -63,17 +63,24 @@ namespace OOP_Day1
 
         #region [Object Oriented Programming]
 
+        enum AccountType
+        {
+            saving,
+            current
+        }
         class Bank_Account_OOPS
         {
             private long AccountNumber;
             public string Name;
             private int Balance;
+            public AccountType accountType;
 
-            public Bank_Account_OOPS(long accountNumber, string name, int balance)
+            public Bank_Account_OOPS(long accountNumber, string name, int balance,AccountType type)
             {
                 AccountNumber = accountNumber;
                 Name = name;
                 Balance = balance;
+                accountType = type;
             }
            
             public void Deposit(int amount)
@@ -107,7 +114,7 @@ namespace OOP_Day1
 
             public static void Main()
             {
-                Bank_Account_OOPS obj = new Bank_Account_OOPS(132568974,"Aayush Panchasara",5000);
+                Bank_Account_OOPS obj = new Bank_Account_OOPS(132568974,"Aayush Panchasara",5000,AccountType.saving);
 
                 Console.WriteLine($"Current Balance: {obj.CurrentBalance()}");
                 obj.Deposit(1000);
