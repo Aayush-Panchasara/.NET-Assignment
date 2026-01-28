@@ -1,0 +1,15 @@
+C:\Users\panch\OneDrive\Desktop\C#\Day-8\OOP-Day2\bin\Debug\net10.0\OOP-Day2.exe
+C:\Users\panch\OneDrive\Desktop\C#\Day-8\OOP-Day2\bin\Debug\net10.0\OOP-Day2.deps.json
+C:\Users\panch\OneDrive\Desktop\C#\Day-8\OOP-Day2\bin\Debug\net10.0\OOP-Day2.runtimeconfig.json
+C:\Users\panch\OneDrive\Desktop\C#\Day-8\OOP-Day2\bin\Debug\net10.0\OOP-Day2.dll
+C:\Users\panch\OneDrive\Desktop\C#\Day-8\OOP-Day2\bin\Debug\net10.0\OOP-Day2.pdb
+C:\Users\panch\OneDrive\Desktop\C#\Day-8\OOP-Day2\obj\Debug\net10.0\OOP-Day2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\panch\OneDrive\Desktop\C#\Day-8\OOP-Day2\obj\Debug\net10.0\OOP-Day2.AssemblyInfoInputs.cache
+C:\Users\panch\OneDrive\Desktop\C#\Day-8\OOP-Day2\obj\Debug\net10.0\OOP-Day2.AssemblyInfo.cs
+C:\Users\panch\OneDrive\Desktop\C#\Day-8\OOP-Day2\obj\Debug\net10.0\OOP-Day2.csproj.CoreCompileInputs.cache
+C:\Users\panch\OneDrive\Desktop\C#\Day-8\OOP-Day2\obj\Debug\net10.0\OOP-Day2.sourcelink.json
+C:\Users\panch\OneDrive\Desktop\C#\Day-8\OOP-Day2\obj\Debug\net10.0\OOP-Day2.dll
+C:\Users\panch\OneDrive\Desktop\C#\Day-8\OOP-Day2\obj\Debug\net10.0\refint\OOP-Day2.dll
+C:\Users\panch\OneDrive\Desktop\C#\Day-8\OOP-Day2\obj\Debug\net10.0\OOP-Day2.pdb
+C:\Users\panch\OneDrive\Desktop\C#\Day-8\OOP-Day2\obj\Debug\net10.0\OOP-Day2.genruntimeconfig.cache
+C:\Users\panch\OneDrive\Desktop\C#\Day-8\OOP-Day2\obj\Debug\net10.0\ref\OOP-Day2.dll
