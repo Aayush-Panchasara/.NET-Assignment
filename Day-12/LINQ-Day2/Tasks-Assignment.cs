@@ -65,7 +65,7 @@ namespace LINQ_Day2
                           join emp in employees on dept.DepId equals emp.DepartmentId into empGroup
                           select (new {DepartmentName = dept.DepName, Employees = empGroup });
 
-            Console.WriteLine("Employee with department department");
+            Console.WriteLine("Employee with their department Name");
             foreach (var item in result1)
             {
                 Console.WriteLine($"EmployeeName: {item.EmpName}, DepartmentName: {item.DepName}");
