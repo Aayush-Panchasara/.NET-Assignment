@@ -1,0 +1,15 @@
+C:\Users\panch\OneDrive\Desktop\C#\Day-13\LINQ-Day3\obj\Debug\net10.0\LINQ-Day3.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\panch\OneDrive\Desktop\C#\Day-13\LINQ-Day3\obj\Debug\net10.0\LINQ-Day3.AssemblyInfoInputs.cache
+C:\Users\panch\OneDrive\Desktop\C#\Day-13\LINQ-Day3\obj\Debug\net10.0\LINQ-Day3.AssemblyInfo.cs
+C:\Users\panch\OneDrive\Desktop\C#\Day-13\LINQ-Day3\obj\Debug\net10.0\LINQ-Day3.csproj.CoreCompileInputs.cache
+C:\Users\panch\OneDrive\Desktop\C#\Day-13\LINQ-Day3\obj\Debug\net10.0\LINQ-Day3.sourcelink.json
+C:\Users\panch\OneDrive\Desktop\C#\Day-13\LINQ-Day3\bin\Debug\net10.0\LINQ-Day3.exe
+C:\Users\panch\OneDrive\Desktop\C#\Day-13\LINQ-Day3\bin\Debug\net10.0\LINQ-Day3.deps.json
+C:\Users\panch\OneDrive\Desktop\C#\Day-13\LINQ-Day3\bin\Debug\net10.0\LINQ-Day3.runtimeconfig.json
+C:\Users\panch\OneDrive\Desktop\C#\Day-13\LINQ-Day3\bin\Debug\net10.0\LINQ-Day3.dll
+C:\Users\panch\OneDrive\Desktop\C#\Day-13\LINQ-Day3\bin\Debug\net10.0\LINQ-Day3.pdb
+C:\Users\panch\OneDrive\Desktop\C#\Day-13\LINQ-Day3\obj\Debug\net10.0\LINQ-Day3.dll
+C:\Users\panch\OneDrive\Desktop\C#\Day-13\LINQ-Day3\obj\Debug\net10.0\refint\LINQ-Day3.dll
+C:\Users\panch\OneDrive\Desktop\C#\Day-13\LINQ-Day3\obj\Debug\net10.0\LINQ-Day3.pdb
+C:\Users\panch\OneDrive\Desktop\C#\Day-13\LINQ-Day3\obj\Debug\net10.0\LINQ-Day3.genruntimeconfig.cache
+C:\Users\panch\OneDrive\Desktop\C#\Day-13\LINQ-Day3\obj\Debug\net10.0\ref\LINQ-Day3.dll
