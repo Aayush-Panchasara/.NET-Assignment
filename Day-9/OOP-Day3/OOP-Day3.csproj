@@ -6,7 +6,7 @@
     <RootNamespace>OOP_Day3</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <StartupObject>OOP_Day3.Method_Hiding</StartupObject>
+    <StartupObject>OOP_Day3.Payment_Processor</StartupObject>
   </PropertyGroup>
 
 </Project>
