@@ -1,0 +1,20 @@
+﻿using EF_Core_Day1.Model;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace EF_Core_Day1.Data
+{
+    internal class AppContextDB : DbContext
+    {
+        public DbSet<Student> Students { get; set; }
+
+        public DbSet<Course> Courses { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer("Server=LAPTOP-3GIF0DSB\\SQLEXPRESS;Database= EFCoreDB; Trusted_Connection=True; TrustServerCertificate=True");
+        }
+    }
+}
