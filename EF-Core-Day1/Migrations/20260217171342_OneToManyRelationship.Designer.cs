@@ -4,6 +4,7 @@ using EF_Core_Day1.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EF_Core_Day1.Migrations
 {
     [DbContext(typeof(AppContextDB))]
-    partial class AppContextModelSnapshot : ModelSnapshot
+    [Migration("20260217171342_OneToManyRelationship")]
+    partial class OneToManyRelationship
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,21 +24,6 @@ namespace EF_Core_Day1.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("CourseStudent", b =>
-                {
-                    b.Property<int>("CoursesCourseId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("StudentsId")
-                        .HasColumnType("int");
-
-                    b.HasKey("CoursesCourseId", "StudentsId");
-
-                    b.HasIndex("StudentsId");
-
-                    b.ToTable("CourseStudent");
-                });
 
             modelBuilder.Entity("EF_Core_Day1.Model.Batch", b =>
                 {
@@ -131,25 +119,10 @@ namespace EF_Core_Day1.Migrations
                     b.ToTable("Trainer");
                 });
 
-            modelBuilder.Entity("CourseStudent", b =>
-                {
-                    b.HasOne("EF_Core_Day1.Model.Course", null)
-                        .WithMany()
-                        .HasForeignKey("CoursesCourseId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("EF_Core_Day1.Model.Student", null)
-                        .WithMany()
-                        .HasForeignKey("StudentsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("EF_Core_Day1.Model.Batch", b =>
                 {
                     b.HasOne("EF_Core_Day1.Model.Course", "Course")
-                        .WithMany("Batches")
+                        .WithMany("batches")
                         .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -167,7 +140,7 @@ namespace EF_Core_Day1.Migrations
 
             modelBuilder.Entity("EF_Core_Day1.Model.Course", b =>
                 {
-                    b.Navigation("Batches");
+                    b.Navigation("batches");
                 });
 
             modelBuilder.Entity("EF_Core_Day1.Model.Trainer", b =>

@@ -1,10 +1,22 @@
-﻿namespace EF_Core_Day1
+﻿using EF_Core_Day1.CRUD_Operation;
+using EF_Core_Day1.Data;
+using EF_Core_Day1.Model;
+using Microsoft.EntityFrameworkCore;
+using System.Threading.Channels;
+
+namespace EF_Core_Day1
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
-        }
+            using (var context = new AppContextDB())
+            {
+                Console_Menu menu = new Console_Menu();
+                menu.StartConsoleMenu(context);
+            }
+
+        } 
+        
     }
 }
