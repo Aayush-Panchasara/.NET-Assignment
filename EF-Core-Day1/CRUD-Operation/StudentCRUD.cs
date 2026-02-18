@@ -3,6 +3,7 @@ using EF_Core_Day1.Model;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Channels;
 
@@ -18,7 +19,7 @@ namespace EF_Core_Day1.CRUD_Operation
                 bool flag = false;
                 while (!flag)
                 {
-                    Console.WriteLine("What operations You have to perform On Student Table?");
+                    Console.WriteLine("What operations You want to perform On Student Table?");
                     Console.WriteLine("Press 1 For Insert");
                     Console.WriteLine("Press 2 For Update");
                     Console.WriteLine("Press 3 For Delete");
@@ -160,6 +161,42 @@ namespace EF_Core_Day1.CRUD_Operation
                 Console.WriteLine($"{{Id={student.Id} FullName={student.Name} Email={student.Email}}}");
             }
             Console.WriteLine();
+        }
+
+        public void EnrollStudentInCourse(AppContextDB context)
+        {
+            Console.WriteLine("For Student Enrollment");
+            Console.Write("Enter the student name you want to enroll : ");
+            string StName = Console.ReadLine();
+
+            Console.Write("Enter the course name in which you want to enroll : ");
+            string CoName = Console.ReadLine();
+
+            var student = context.Students.Where(s => s.Name == StName).FirstOrDefault();
+            var course = context.Courses.Where(c => c.Title == CoName).FirstOrDefault();
+
+            if(course != null && student != null)
+            {
+                student.Courses.Add(course);
+            }else if (course == null)
+            {
+                throw new Exception($"{CoName} course does not exists.");
+            }
+            else
+            {
+                throw new Exception($"Student with name {StName} does not exists.");
+            }
+
+
+            try
+            {
+                context.SaveChanges();
+                Console.WriteLine($"Student with name {StName}, Successfully enrolled in {CoName} course.");
+            }catch(Exception ex)
+            {
+                Console.WriteLine($"Enrollment Failed: {ex.Message}");
+            }
+
         }
     }
 }

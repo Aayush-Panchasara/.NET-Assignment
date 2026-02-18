@@ -14,6 +14,7 @@ namespace EF_Core_Day1.Model
         public int CourseId { get; set; }
         [ForeignKey("Trainer")]
         public int TrainerId { get; set; }
+        
         public Course Course { get; set; }
 
         public Trainer Trainer { get; set; }

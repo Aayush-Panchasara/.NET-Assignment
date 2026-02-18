@@ -17,7 +17,7 @@ namespace EF_Core_Day1.CRUD_Operation
                     bool flag = false;
                     while (!flag)
                     {
-                        Console.WriteLine("What operations You have to perform On Course Table?");
+                        Console.WriteLine("What operations You want to perform On Course Table?");
                         Console.WriteLine("Press 1 For Insert");
                         Console.WriteLine("Press 2 For Update");
                         Console.WriteLine("Press 3 For Delete");
@@ -165,6 +165,61 @@ namespace EF_Core_Day1.CRUD_Operation
                 Console.WriteLine($"{{Id={course.CourseId}, Title={course.Title}, Price={course.Fees}, Duration={course.DurationInMonths}}}");
             }
             Console.WriteLine();
+        }
+
+        public void CourseWithStudent(AppContextDB context)
+        {
+            var course = context.Courses
+                                 .Include(c => c.Students)
+                                 .ToList();
+
+            foreach (var item in course)
+            {
+                Console.WriteLine($"\nCourse: {item.Title}");
+                if(item.Students.Count != 0)
+                {
+                    foreach (var item1 in item.Students)
+                    {
+                        Console.WriteLine($"\tStudent: {item1.Name}");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("\tNo Student");
+                }
+            }
+
+        }
+
+        public void StudentWithSpecificCourse(AppContextDB context)
+        {
+            Console.Write("Enter the Course name: ");
+            string title = Console.ReadLine();
+
+            var course = context.Courses
+                                 .Where(t => t.Title == title)
+                                 .Include(t => t.Students)
+                                 .ToList();
+            if (course.Count == 0)
+            {
+                Console.WriteLine($"{title} course does not exists.");
+            }
+
+            foreach (var item in course)
+            {
+                Console.WriteLine($"\nCourse: {title}");
+                if (item.Students.Count != 0)
+                {
+                    foreach (var item1 in item.Students)
+                    {
+                        Console.WriteLine($"\tStudent: {item1.Name}");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("\tNo student");
+                }
+            }
         }
 
     }
