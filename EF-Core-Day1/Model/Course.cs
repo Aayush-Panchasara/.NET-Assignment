@@ -6,7 +6,7 @@ using System.Text;
 
 namespace EF_Core_Day1.Model
 {
-    internal class Course
+    public class Course
     {
         [Key]
         public int CourseId { get; set; }
@@ -16,8 +16,8 @@ namespace EF_Core_Day1.Model
         public int Fees { get; set; }
         public int DurationInMonths { get; set; }
 
-        public List<Batch> Batches { get; set; } = new();
-        public List<Student> Students { get; set; } = new();
+        public virtual List<Batch> Batches { get; set; } = new();
+        public virtual List<Student> Students { get; set; } = new();
 
     }
 }

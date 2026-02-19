@@ -11,10 +11,10 @@ namespace EF_Core_Day1.CRUD_Operation
         public void StartConsoleMenu(AppContextDB context)
         {
 
-            StudentCRUD studentCRUD = new StudentCRUD();
-            CourseCRUD courseCRUD = new CourseCRUD();
+            StudentCRUD studentCRUD = new StudentCRUD(context);
+            CourseCRUD courseCRUD = new CourseCRUD(context);
             BatchCRUD batchCRUD = new BatchCRUD();
-            TrainerCRUD trainerCRUD = new TrainerCRUD();
+            TrainerCRUD trainerCRUD = new TrainerCRUD(context);
             bool flag = false;
             while (!flag) 
             {
@@ -36,16 +36,16 @@ namespace EF_Core_Day1.CRUD_Operation
                 {
                     switch (operation)
                     {
-                        case 1: studentCRUD.AddStudent(context); break;
-                        case 2: courseCRUD.AddCourse(context); break;
-                        case 3: studentCRUD.GetAllStudent(context); break;
-                        case 4: courseCRUD.GetAllCourse(context); break;
-                        case 5: studentCRUD.EnrollStudentInCourse(context);break;
+                        case 1: studentCRUD.AddStudent(); break;
+                        case 2: courseCRUD.AddCourse(); break;
+                        case 3: studentCRUD.GetAllStudent(); break;
+                        case 4: courseCRUD.GetAllCourse(); break;
+                        case 5: studentCRUD.EnrollStudentInCourse();break;
                         case 6: batchCRUD.AddBatch(context); break;
-                        case 7: courseCRUD.CourseWithStudent(context); break;
-                        case 8: trainerCRUD.TrainerWithBatches(context); break;
-                        case 9: courseCRUD.StudentWithSpecificCourse(context); break;
-                        case 10:trainerCRUD.BatchesWithSpecificTrainer(context); break;
+                        case 7: courseCRUD.CourseWithStudent(); break;
+                        case 8: trainerCRUD.TrainerWithBatches(); break;
+                        case 9: courseCRUD.StudentWithSpecificCourse(); break;
+                        case 10:trainerCRUD.BatchesWithSpecificTrainer(); break;
                     }
                 }
                 catch (Exception ex)

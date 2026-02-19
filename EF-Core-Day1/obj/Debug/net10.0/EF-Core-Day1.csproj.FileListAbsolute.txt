@@ -154,3 +154,5 @@ C:\Users\panch\OneDrive\Desktop\C#\EF-Core-Day1\obj\Debug\net10.0\refint\EF-Core
 C:\Users\panch\OneDrive\Desktop\C#\EF-Core-Day1\obj\Debug\net10.0\EF-Core-Day1.pdb
 C:\Users\panch\OneDrive\Desktop\C#\EF-Core-Day1\obj\Debug\net10.0\EF-Core-Day1.genruntimeconfig.cache
 C:\Users\panch\OneDrive\Desktop\C#\EF-Core-Day1\obj\Debug\net10.0\ref\EF-Core-Day1.dll
+C:\Users\panch\OneDrive\Desktop\C#\EF-Core-Day1\bin\Debug\net10.0\Castle.Core.dll
+C:\Users\panch\OneDrive\Desktop\C#\EF-Core-Day1\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.Proxies.dll

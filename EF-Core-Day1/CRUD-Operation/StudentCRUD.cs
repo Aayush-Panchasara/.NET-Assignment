@@ -11,10 +11,13 @@ namespace EF_Core_Day1.CRUD_Operation
 {
     internal class StudentCRUD
     {
+        AppContextDB context;
+        public StudentCRUD(AppContextDB context)
+        {
+            this.context = context;
+        }
         public void StartCRUDOperation()
         {
-            using (var context = new AppContextDB())
-            {
 
                 bool flag = false;
                 while (!flag)
@@ -32,10 +35,10 @@ namespace EF_Core_Day1.CRUD_Operation
                     {
                         switch (operation)
                         {
-                            case 1: AddStudent(context); break;
-                            case 2: UpdateStudent(context); break;
-                            case 3: DeleteStudent(context); break;
-                            case 4: GetAllStudent(context); break;
+                            case 1: AddStudent(); break;
+                            case 2: UpdateStudent(); break;
+                            case 3: DeleteStudent(); break;
+                            case 4: GetAllStudent(); break;
                         }
                     }
                     catch (Exception ex)
@@ -43,7 +46,7 @@ namespace EF_Core_Day1.CRUD_Operation
                         Console.WriteLine($"Error: {ex.Message}");
                     }
 
-                    Console.Write("\nDo you Want to continue?(y/n): ");
+                    Console.Write("\nDo you Want to continue StudentCRUD?(y/n): ");
                     char option = Convert.ToChar(Console.ReadLine());
 
                     if (option == 'n')
@@ -60,10 +63,10 @@ namespace EF_Core_Day1.CRUD_Operation
                         break;
                     }
                 }
-            }
+            
         }
 
-        public void AddStudent(AppContextDB context)
+        public void AddStudent()
         {
             string Name, Email;
             Console.WriteLine("For Insertion:");
@@ -76,11 +79,15 @@ namespace EF_Core_Day1.CRUD_Operation
             Student student = new Student() { Name = Name, Email = Email, CreatedDate = DateOnly.FromDateTime(DateTime.Now) };
 
             var result = context.Students.Add(student);
-            var state = context.Entry(student).State;
+          
 
             try
             {
+                var state = context.Entry(student).State;
+                Console.WriteLine($"State before: {state}");
                 context.SaveChanges();
+                state = context.Entry(student).State;
+                Console.WriteLine($"State after: {state}");
                 Console.WriteLine("\nStudent Inserted Successfully\n");
             }
             catch (DbUpdateException ex)
@@ -89,7 +96,7 @@ namespace EF_Core_Day1.CRUD_Operation
             }
         }
 
-        public void UpdateStudent(AppContextDB context)
+        public void UpdateStudent()
         {
             Console.WriteLine("For Updation");
             Console.WriteLine("Enter the ID of Student that You want to update : ");
@@ -101,21 +108,44 @@ namespace EF_Core_Day1.CRUD_Operation
                 throw new Exception($"Student with ID {Id} does not exists");
             }
 
-            Console.Write("Enter Student's New FullName: ");
-            string NewName = Console.ReadLine();
+            Console.WriteLine("What fields Do yo want to update?");
+            Console.WriteLine("Press 1 for Name");
+            Console.WriteLine("Press 2 for Email");
+            Console.WriteLine("Press 3 for Name & Email");
 
-            Console.Write("Enter Student's New FullName: ");
-            string NewEmail = Console.ReadLine();
+            int option = Convert.ToInt32(Console.ReadLine());
 
 
-            //Console.WriteLine(student.Name);
+            switch (option)
+            {
+                case 1: 
+                    Console.Write("Enter Student's New FullName: ");
+                    string NewName = Console.ReadLine();
+                    student.Name = NewName;
+                    break;
+                case 2:
+                    Console.Write("Enter Student's New Email: ");
+                    string NewEmail = Console.ReadLine();
+                    student.Email = NewEmail;
+                    break;
+                case 3:
+                    Console.Write("Enter Student's New FullName: ");
+                    string NewName1 = Console.ReadLine();
 
-            student.Name = NewName;
-            student.Email = NewEmail;
+                    Console.Write("Enter Student's New Email: ");
+                    string NewEmail2 = Console.ReadLine();
+                    student.Name = NewName1;
+                    student.Email = NewEmail2;
+                    break;
+            }
 
             try
             {
+                var state = context.Entry(student).State;
+                Console.WriteLine($"State before: {state}");
                 context.SaveChanges();
+                state = context.Entry(student).State;
+                Console.WriteLine($"State after: {state}");
                 Console.WriteLine("\nStudent Updated Successfully\n");
             }
             catch (DbUpdateException ex)
@@ -126,7 +156,7 @@ namespace EF_Core_Day1.CRUD_Operation
 
         }
 
-        public void DeleteStudent(AppContextDB context)
+        public void DeleteStudent()
         {
             Console.WriteLine("For Deletion: ");
             Console.WriteLine("Enter the ID of Student that You want to Delete : ");
@@ -142,7 +172,11 @@ namespace EF_Core_Day1.CRUD_Operation
 
             try
             {
+                var state = context.Entry(student).State;
+                Console.WriteLine($"State before: {state}");
                 context.SaveChanges();
+                state = context.Entry(student).State;
+                Console.WriteLine($"State after: {state}");
                 Console.WriteLine("\nStudent Deleted Successfully\n");
             }
             catch (DbUpdateException ex)
@@ -151,7 +185,7 @@ namespace EF_Core_Day1.CRUD_Operation
             }
         }
 
-        public void GetAllStudent(AppContextDB context)
+        public void GetAllStudent()
         {
             var students = context.Students;
             Console.WriteLine("\nStudent List: \n");
@@ -163,7 +197,7 @@ namespace EF_Core_Day1.CRUD_Operation
             Console.WriteLine();
         }
 
-        public void EnrollStudentInCourse(AppContextDB context)
+        public void EnrollStudentInCourse()
         {
             Console.WriteLine("For Student Enrollment");
             Console.Write("Enter the student name you want to enroll : ");
@@ -190,7 +224,11 @@ namespace EF_Core_Day1.CRUD_Operation
 
             try
             {
+                var state = context.Entry(student).State;
+                Console.WriteLine($"State before: {state}");
                 context.SaveChanges();
+                state = context.Entry(student).State;
+                Console.WriteLine($"State after: {state}");
                 Console.WriteLine($"Student with name {StName}, Successfully enrolled in {CoName} course.");
             }catch(Exception ex)
             {
@@ -198,5 +236,7 @@ namespace EF_Core_Day1.CRUD_Operation
             }
 
         }
+        
+       
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace EF_Core_Day1.Model
 {
-    internal class Student
+    public class Student
     {
         [Key]
         public int Id { get; set; }
@@ -16,7 +16,7 @@ namespace EF_Core_Day1.Model
         public string Email { get; set; }
         public DateOnly CreatedDate { get; set; }
 
-        public List<Course> Courses { get; set; } = new();
+        public virtual List<Course> Courses { get; set; } = new();
 
     }
 }

@@ -15,7 +15,6 @@ namespace EF_Core_Day1.Data.Configurations
                 new Student() {Id=-1, Name="Niken Patel",Email="niken.p@student.com",CreatedDate=DateOnly.FromDateTime(DateTime.Now) },
                 new Student() {Id=-2, Name="Devam Satasiya",Email="devam.s@student.com",CreatedDate=DateOnly.FromDateTime(DateTime.Now) },
                 new Student() {Id=-3, Name="Mann Badreshiya",Email="mann.b@student.com",CreatedDate=DateOnly.FromDateTime(DateTime.Now) }
-
                 );
         }
     }
