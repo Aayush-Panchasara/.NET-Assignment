@@ -40,6 +40,9 @@ namespace EF_Core_Day1
                     Console.WriteLine("Press 4 To Perform Eager Loading");
                     Console.WriteLine("Press 5 To Perform Lazy Loading");
                     Console.WriteLine("Press 6 To Perform Explicit Loading");
+                    Console.WriteLine("Press 7 To Show Detached behavoiur");
+                    Console.WriteLine("Press 8 To Show AsNoTracking() behavoiur");
+                    Console.WriteLine("Press 9 To Show Attached Behaviour");
 
                     int operation = Convert.ToInt32(Console.ReadLine());
 
@@ -53,6 +56,9 @@ namespace EF_Core_Day1
                             case 4: Loading.EagerLoading(context);break;
                             case 5: Loading.LazyLoading(context);break;
                             case 6: Loading.ExplicitLoading(context);break;
+                            case 7: Detached_And_Attached.PerformDetached(context); break;
+                            case 8: Detached_And_Attached.PerformAsNoTracking(context); break;
+                            case 9: Detached_And_Attached.UpdateAttachedData(context); break;
 
                         }
                     }
