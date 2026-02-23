@@ -4,6 +4,7 @@ using EF_Core_Day1.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EF_Core_Day1.Migrations
 {
     [DbContext(typeof(AppContextDB))]
-    partial class AppContextModelSnapshot : ModelSnapshot
+    [Migration("20260218085432_ManyToManyRelationship")]
+    partial class ManyToManyRelationship
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -60,7 +63,7 @@ namespace EF_Core_Day1.Migrations
 
                     b.HasIndex("TrainerId");
 
-                    b.ToTable("Batches");
+                    b.ToTable("Batch");
                 });
 
             modelBuilder.Entity("EF_Core_Day1.Model.Course", b =>
@@ -79,28 +82,11 @@ namespace EF_Core_Day1.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("CourseId");
 
                     b.ToTable("Courses");
-
-                    b.HasData(
-                        new
-                        {
-                            CourseId = 1,
-                            DurationInMonths = 3,
-                            Fees = 1500m,
-                            Title = "React"
-                        },
-                        new
-                        {
-                            CourseId = 2,
-                            DurationInMonths = 2,
-                            Fees = 1499m,
-                            Title = "Angular"
-                        });
                 });
 
             modelBuilder.Entity("EF_Core_Day1.Model.Student", b =>
@@ -126,29 +112,6 @@ namespace EF_Core_Day1.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Students");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = -1,
-                            CreatedDate = new DateOnly(2026, 2, 18),
-                            Email = "niken.p@student.com",
-                            Name = "Niken Patel"
-                        },
-                        new
-                        {
-                            Id = -2,
-                            CreatedDate = new DateOnly(2026, 2, 18),
-                            Email = "devam.s@student.com",
-                            Name = "Devam Satasiya"
-                        },
-                        new
-                        {
-                            Id = -3,
-                            CreatedDate = new DateOnly(2026, 2, 18),
-                            Email = "mann.b@student.com",
-                            Name = "Mann Badreshiya"
-                        });
                 });
 
             modelBuilder.Entity("EF_Core_Day1.Model.Trainer", b =>
@@ -164,26 +127,11 @@ namespace EF_Core_Day1.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Trainers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            ExperienceInYear = 4,
-                            Name = "JayDip"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            ExperienceInYear = 3,
-                            Name = "Vivek"
-                        });
+                    b.ToTable("Trainer");
                 });
 
             modelBuilder.Entity("CourseStudent", b =>
