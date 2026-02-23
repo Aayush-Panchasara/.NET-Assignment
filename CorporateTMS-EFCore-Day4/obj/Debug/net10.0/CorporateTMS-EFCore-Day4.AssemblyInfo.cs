@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CorporateTMS-EFCore-Day4")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+de3abb7278b77ab47662e96d746de160f3fcdebf")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8392dc03169d024649411d57699008486fcd9ae9")]
 [assembly: System.Reflection.AssemblyProductAttribute("CorporateTMS-EFCore-Day4")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CorporateTMS-EFCore-Day4")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

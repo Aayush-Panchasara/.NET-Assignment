@@ -25,6 +25,7 @@ namespace CorporateTMS_EFCore_Day4.Repository.Data
             modelBuilder.ApplyConfiguration(new DepartmentConfiguration());
             modelBuilder.ApplyConfiguration(new EnrollmentConfiguration());
             modelBuilder.ApplyConfiguration(new TrainingProgramConfiguration());
+            modelBuilder.ApplyConfiguration(new TrainerConfiguration());
         }
     }
 }

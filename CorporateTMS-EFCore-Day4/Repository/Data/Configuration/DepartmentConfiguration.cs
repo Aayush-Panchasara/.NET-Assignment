@@ -20,7 +20,13 @@ namespace CorporateTMS_EFCore_Day4.Repository.Data.Configuration
                     .IsRequired()
                     .HasColumnType("varchar(70)");
 
-
+            builder.HasData(
+                    new Department() { Id = 1, Name = "IT", Location = "Ahmedabad" },
+                    new Department() { Id = 2, Name = "HR", Location = "Mumbai" },
+                    new Department() { Id = 3, Name = "Sales", Location = "Chennai" },
+                    new Department() { Id = 4, Name = "Marketing", Location = "Delhi" },
+                    new Department() { Id = 5, Name = "Finance", Location = "Banglore" }
+                    );
                     
 
         }
