@@ -9,61 +9,65 @@ namespace EF_Core_Day1.CRUD_Operation
 {
     internal class CourseCRUD
     {
+        AppContextDB context;
+
+        public CourseCRUD(AppContextDB context)
+        {
+            this.context = context;
+        }
+
         public void StartCRUDOperation()
         {
-                using (var context = new AppContextDB())
-                {
-
-                    bool flag = false;
-                    while (!flag)
-                    {
-                        Console.WriteLine("What operations You want to perform On Course Table?");
-                        Console.WriteLine("Press 1 For Insert");
-                        Console.WriteLine("Press 2 For Update");
-                        Console.WriteLine("Press 3 For Delete");
-                        Console.WriteLine("Press 4 For Selection");
+            bool flag = false;
+            while (!flag)
+            {
+                Console.WriteLine("What operations You want to perform On Course Table?");
+                Console.WriteLine("Press 1 For Insert");
+                Console.WriteLine("Press 2 For Update");
+                Console.WriteLine("Press 3 For Delete");
+                Console.WriteLine("Press 4 For Selection");
+                Console.WriteLine("Press 5 To show Course With Student(Eagar Loading)");
                        
 
-                        int operation = Convert.ToInt32(Console.ReadLine());
+                int operation = Convert.ToInt32(Console.ReadLine());
 
-                    try
-                    {
-                        switch (operation)
-                        {
-                            case 1: AddCourse(context); break;
-                            case 2: UpdateCourse(context); break;
-                            case 3: DeleteCourse(context); break;
-                            case 4: GetAllCourse(context); break;
-                        }
-                    }
-                    catch (Exception ex) 
-                    {
-                        Console.WriteLine($"Error: {ex.Message}");
-                    }
-
-                        Console.Write("\nDo you Want to continue?(y/n): ");
-                        char option = Convert.ToChar(Console.ReadLine());
-
-                        if (option == 'n')
-                        {
-                            flag = true;
-                        }
-                        else if (option == 'y')
-                        {
-                            continue;
-                        }
-                        else
-                        {
-                            Console.WriteLine("Invalid Input Operation Stops");
-                            break;
-                        }
-                    }
+            try
+            {
+                switch (operation)
+                {
+                    case 1: AddCourse(); break;
+                    case 2: UpdateCourse(); break;
+                    case 3: DeleteCourse(); break;
+                    case 4: GetAllCourse(); break;
+                    case 5: CourseWithStudent();break;
                 }
+            }
+            catch (Exception ex) 
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+
+                Console.Write("\nDo you Want to continue CourseCRUD?(y/n): ");
+                char option = Convert.ToChar(Console.ReadLine());
+
+                if (option == 'n')
+                {
+                    flag = true;
+                }
+                else if (option == 'y')
+                {
+                    continue;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid Input Operation Stops");
+                    break;
+                }
+            }
         }
            
-        
-
-        public void AddCourse(AppContextDB context)
+       
+        public void AddCourse()
         {
             string Title;
             int Fees,Duration;
@@ -84,7 +88,11 @@ namespace EF_Core_Day1.CRUD_Operation
 
             try
             {
+                var state = context.Entry(course).State;
+                Console.WriteLine($"State before: {state}");
                 context.SaveChanges();
+                state = context.Entry(course).State;
+                Console.WriteLine($"State after: {state}");
                 Console.WriteLine("\nCourse Inserted Successfully\n");
             }
             catch (DbUpdateException ex)
@@ -93,7 +101,7 @@ namespace EF_Core_Day1.CRUD_Operation
             }
         }
 
-        public void UpdateCourse(AppContextDB context)
+        public void UpdateCourse()
         {
             Console.WriteLine("For Updation");
             Console.WriteLine("Enter the ID of Course that You want to update : ");
@@ -105,23 +113,55 @@ namespace EF_Core_Day1.CRUD_Operation
                 throw new Exception($"Course with ID {Id} does not exists");
             }
 
-            Console.Write("Enter Course's New Title: ");
-            string NewTitle = Console.ReadLine();
+            Console.WriteLine("What fields Do yo want to update?");
+            Console.WriteLine("Press 1 for Title");
+            Console.WriteLine("Press 2 for Price");
+            Console.WriteLine("Press 3 for Duration");
+            Console.WriteLine("Press 4 for All Fields");
 
-            Console.Write("Enter Course's New Fees: ");
-            int NewPrice = Convert.ToInt32(Console.ReadLine());
-
-            Console.Write("Enter Course's New Duration: ");
-            int NewDuration = Convert.ToInt32(Console.ReadLine());
+            int option = Convert.ToInt32(Console.ReadLine());
 
 
-            course.Title = NewTitle;
-            course.Fees = NewPrice;
-            course.DurationInMonths = NewDuration;
+            switch (option)
+            {
+                case 1:
+                    Console.Write("Enter Course New Title: ");
+                    string NewTitle = Console.ReadLine();
+                    course.Title = NewTitle;
+                    break;
+                case 2:
+                    Console.Write("Enter Course New Price: ");
+                    int NewPrice = Convert.ToInt32(Console.ReadLine());
+                    course.Fees = NewPrice;
+                    break;
+                case 3:
+                    Console.Write("Enter Course New Duration: ");
+                    int NewDuration = Convert.ToInt32(Console.ReadLine());
+                    course.DurationInMonths = NewDuration;
+                    break;
+                case 4:
+                    Console.Write("Enter Course New Title: ");
+                    string NewTitle1 = Console.ReadLine();
+
+                    Console.Write("Enter Course New Fees: ");
+                    int NewPrice1 = Convert.ToInt32(Console.ReadLine());
+
+                    Console.Write("Enter Course New Duration: ");
+                    int NewDuration1 = Convert.ToInt32(Console.ReadLine());
+
+                    course.Title = NewTitle1;
+                    course.Fees = NewPrice1;
+                    course.DurationInMonths = NewDuration1;
+                    break;
+            }
 
             try
             {
+                var state = context.Entry(course).State;
+                Console.WriteLine($"State before: {state}");
                 context.SaveChanges();
+                state = context.Entry(course).State;
+                Console.WriteLine($"State after: {state}");
                 Console.WriteLine("\nCourse Updated Successfully\n");
             }
             catch (DbUpdateException ex)
@@ -130,7 +170,7 @@ namespace EF_Core_Day1.CRUD_Operation
             }
         }
 
-        public void DeleteCourse(AppContextDB context)
+        public void DeleteCourse()
         {
             Console.WriteLine("For Deletion: ");
             Console.WriteLine("Enter the ID of Course that You want to Delete : ");
@@ -146,7 +186,11 @@ namespace EF_Core_Day1.CRUD_Operation
 
             try
             {
+                var state = context.Entry(course).State;
+                Console.WriteLine($"State before: {state}");
                 context.SaveChanges();
+                state = context.Entry(course).State;
+                Console.WriteLine($"State after: {state}");
                 Console.WriteLine("\nCourse Deleted Successfully\n");
             }
             catch (DbUpdateException ex)
@@ -155,7 +199,7 @@ namespace EF_Core_Day1.CRUD_Operation
             }
         }
 
-        public void GetAllCourse(AppContextDB context)
+        public void GetAllCourse()
         {
             var courses = context.Courses;
             Console.WriteLine("\nCourse List: \n");
@@ -167,7 +211,7 @@ namespace EF_Core_Day1.CRUD_Operation
             Console.WriteLine();
         }
 
-        public void CourseWithStudent(AppContextDB context)
+        public void CourseWithStudent()
         {
             var course = context.Courses
                                  .Include(c => c.Students)
@@ -191,7 +235,7 @@ namespace EF_Core_Day1.CRUD_Operation
 
         }
 
-        public void StudentWithSpecificCourse(AppContextDB context)
+        public void StudentWithSpecificCourse()
         {
             Console.Write("Enter the Course name: ");
             string title = Console.ReadLine();
